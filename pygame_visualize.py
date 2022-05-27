@@ -1,8 +1,9 @@
+
 import pygame
 import pygame.image
 # import multithreading
 import threading
-
+from algos import *
 import sys
 import math
 import cv2
@@ -11,30 +12,12 @@ import cv2
 def thread_function(screen, index):
     pygame.image.save(screen, f"imgs/{str(index).zfill(5)}.png")
 
-
-def bubble_sort(arr):
-    for i in range(len(arr)-1):
-        for j in range(len(arr)-1-i):
-            special_colors = {len(arr)-i: GREEN}
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-            special_colors[j] = RED
-            special_colors[j+1] = RED
-            yield special_colors
-    yield {1: GREEN}
-    yield {0: GREEN}
-
-
-RECORD = False
-WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-GREEN = (0, 255, 0)
-WIDTH, HEIGHT = 1280, 720
-PADDING_LEFT, PADDING_RIGHT = 50, 50
-PADDING_TOP = 20
-MAX_FPS, VIDEO_FPS = 60, 60
-lst = [21, 42, 19, 4, 24, 16, 23, 7, 1, 6, 5, 34, 27, 18, 50, 43,
+lst = [21, 42, 19, 4, 24, 16, 23, 7, 3, 6, 5, 34, 27, 18, 50, 43,
        21, 52, 47, 39, 25, 46, 13, 12, 34, 20, 10, 9, 4, 35, 5, 8, 23]
+# create lst of 256 random numbers from 23 to 100
+import random
+lst = [random.randint(5, 40) for _ in range(256)] 
+# lst = [3,1,4,5,6,6]
 scale_factor = (HEIGHT-PADDING_TOP)/max(lst)
 scale_factor = math.floor(scale_factor)
 pygame.init()
@@ -47,7 +30,7 @@ if RECORD:
 fpsClock = pygame.time.Clock()
 
 while not done:
-    for index, special_colors in enumerate(bubble_sort(lst)):
+    for index, special_colors in enumerate(radixSort(lst)):
         screen.fill((0, 0, 0))
         for i in range(len(lst)):
             x_diff = (WIDTH - PADDING_RIGHT-PADDING_LEFT)/len(lst)
