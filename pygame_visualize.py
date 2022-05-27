@@ -53,6 +53,14 @@ while not done:
     done = True
 
 if RECORD:
+    import os
+    # os.mkdir("imgs")
+    if not os.path.exists("imgs"):
+        os.mkdir("imgs")
+    else:
+        for file_name in os.listdir("imgs"):
+            os.remove(os.path.join("imgs",file_name))
+
     for thread in threading.enumerate():
         if thread is not threading.currentThread():
             thread.join()
