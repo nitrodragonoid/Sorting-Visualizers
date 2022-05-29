@@ -39,6 +39,6 @@ def bubble_sort(arr):
     yield {0:GREEN}
     # draw_loop(arr,index,{0:GREEN})
 import os
-# os.mkdir("imgs")
+os.mkdir("imgs")
 for index,special_colors in enumerate(bubble_sort(arr)):
     draw_loop(arr,index,special_colors)
