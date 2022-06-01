@@ -49,22 +49,54 @@ def insertion_sort(arr):
             yield special_colors
         
     yield {len(arr)-1: GREEN}
+    
+def pigeonhole_sort(arr):
+    min_el = min(arr)
+    max_el = max(arr)
+    
+    num_of_holes = max_el - min_el + 1
+    pigeon_holes = [0] * num_of_holes
+    
+    for el in arr:
+        pigeon_holes[el - min_el] += 1
+        
+    c = 0
+    for i in range(num_of_holes):
+        while pigeon_holes[i] > 0:
+            pigeon_holes[i] -= 1
+            arr[c] = i + min_el
+            c+=1
+            yield{}
+    yield{}
+            
+        
 from itertools import permutations
+import random
+
 def bogo_sort(arr):
-    arr_copy = arr.copy()
-    for a in permutations(arr_copy):
-        for i,val in enumerate(a):
-            arr[i] = val
-        flag = True
-        for i in range(0,len(arr)-1):
-            if arr[i] >arr[i+1]:
-                flag = False
-                break
-        if flag == True:
+    s = sorted(arr)
+    while True:
+        random.shuffle(arr)
+        if arr == s:
             yield {i:GREEN for i in range(len(arr))}
             break
         else:
             yield {}
+            
+    # arr_copy = arr.copy()
+    # for a in permutations(arr_copy):
+    #     for i,val in enumerate(a):
+    #         arr[i] = val
+    #     flag = True
+    #     for i in range(0,len(arr)-1):
+    #         if arr[i] >arr[i+1]:
+    #             flag = False
+    #             break
+    #     if flag == True:
+    #         yield {i:GREEN for i in range(len(arr))}
+    #         break
+    #     else:
+    #         yield {}
 
 def merge_sort(arr):
     yield from _merge_sort(arr, 0, len(arr)-1)
