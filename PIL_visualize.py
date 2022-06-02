@@ -19,9 +19,13 @@ def draw_loop(arr,image_num,special_colors,img_names):
     image.save(f"imgs/{str(image_num).zfill(5)}.png")
     img_names.append(f"imgs/{str(image_num).zfill(5)}.png")
     
-    #uncomment for 2 frames
-    # image.save(f"imgs/{str(image_num).zfill(5)}1.png")
-    # img_names.append(f"imgs/{str(image_num).zfill(5)}1.png")
+    # uncomment for 2 frames
+    image.save(f"imgs/{str(image_num).zfill(5)}1.png")
+    img_names.append(f"imgs/{str(image_num).zfill(5)}1.png")
+    
+    # uncomment for 3 frames
+    image.save(f"imgs/{str(image_num).zfill(5)}2.png")
+    img_names.append(f"imgs/{str(image_num).zfill(5)}2.png")
 
     # draw_loop(arr,index,{0:GREEN})
 import os
@@ -40,9 +44,14 @@ for index,special_colors in enumerate(pigeonhole_sort(arr)):
     img = cv2.imread(f"imgs/{str(index).zfill(5)}.png")
     out.write(img)
     
-    #uncomment for 2 frames
-    # img = cv2.imread(f"imgs/{str(index).zfill(5)}1.png")
-    # out.write(img)
+    # uncomment for 2 frames
+    img = cv2.imread(f"imgs/{str(index).zfill(5)}1.png")
+    out.write(img)
+    
+    # uncomment for 3 frames
+    img = cv2.imread(f"imgs/{str(index).zfill(5)}2.png")
+    out.write(img)
+    
 out.release()
 
 

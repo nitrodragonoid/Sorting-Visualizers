@@ -17,6 +17,9 @@ class abacus:
                 else:
                     self.head[n].next = Node()
                     
+    def sort(self):
+        pass
+                    
                     
                     
     

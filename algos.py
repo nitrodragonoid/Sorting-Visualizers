@@ -66,8 +66,9 @@ def pigeonhole_sort(arr):
             pigeon_holes[i] -= 1
             arr[c] = i + min_el
             c+=1
-            yield{}
-    yield{}
+            ind = arr.index(i + min_el)
+            yield{c:RED, ind:YELLOW}
+    yield{i:GREEN for i in range(len(arr))}
             
         
 from itertools import permutations
