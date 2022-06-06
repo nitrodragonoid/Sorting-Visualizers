@@ -3,6 +3,8 @@ import math
 from algos import *
 import shutil
 import os
+import moviepy.editor as mpe
+
 
 output_name = "final.mp4"
 arr = [21,42,19,4,24,16,23,7,1,6,5,34,27,18,50,43,21,52,47,39,25,46,13,12,34,20,10,9,4,35,5,8,23]
@@ -71,7 +73,6 @@ out.release()
 
 
 #Adding Audio
-import moviepy.editor as mpe
 my_clip = mpe.VideoFileClip('PIL_Visualize.mp4')
 audio_background = mpe.AudioFileClip('audio.mp3') # ADD THE AUDIO FILE YOU WANT TO ADD HERE
 final_clip = my_clip.set_audio(audio_background)
